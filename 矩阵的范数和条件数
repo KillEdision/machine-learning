@@ -2,7 +2,11 @@
 
 例1 考虑下面的两个线性方程组：
 
-![](http://latex.codecogs.com/gif.latex?\\left\\{ {\\begin{array}{*{20}{c}}
-{2{x_1} + \\quad \\quad \\quad 6{x_2} = 8\\quad \\;\\quad \\quad }\\\\
-{2{x_1} + 6.00001{x_2} = 8.00001}
-\\end{array}} \\right.)
+![](http://latex.codecogs.com/gif.latex?\\left\\{ {\\begin{array}{*{20}{c}}{2{x_1} + 6{x_2} = 8\\;}\\\\{2{x_1} + 6.00001{x_2} = 8.00001}\\end{array}} \\right.)  
+
+与  
+
+![](http://latex.codecogs.com/gif.latex?\\left\\{ {\\begin{array}{*{20}{c}}{2{x_1} + 6{x_2} = 8\\;}\\\\{2{x_1} + 5.99999{x_2} = 8.00002}\\end{array}} \\right.)  
+
+
+
