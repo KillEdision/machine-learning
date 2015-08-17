@@ -3,6 +3,8 @@
 ### sessionInfo
 ```r
 sessionInfo()
+```
+```
 R version 3.2.1 (2015-06-18)
 Platform: i386-w64-mingw32/i386 (32-bit)
 Running under: Windows 7 (build 7601) Service Pack 1
