@@ -72,6 +72,7 @@ output:
 解决这个问题需要使用到`showtext`包，因此可以在Rmd文件的开头加入下面的代码
 ```rmd
 library(knitr)
+library(printr) # 美化输出
 library(showtext)
 opts_chunk$set(fig.showtext = TRUE,prompt = TRUE,message = FALSE,warning = FALSE)
 ```
