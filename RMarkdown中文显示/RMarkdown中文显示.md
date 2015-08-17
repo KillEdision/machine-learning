@@ -54,6 +54,9 @@ loaded via a namespace (and not attached):
 ```
 然后用`includes`字段把它插入模板中：
 ```rmd
+title: "面向深度学习的R语言线性代数速查"
+author: "赵奇"
+date: "2015年8月17日"
 output: 
   pdf_document: 
     highlight: espresso
@@ -64,4 +67,13 @@ output:
     toc: yes
     toc_depth: 3
 ---
+```
+至此，Rmd文件显示中文问题已经解决了。然而，另外一个问题是怎样使Rmd文件中生成的图形中的中文也正常显示出来。  
+解决这个问题需要使用到`showtext`包，因此可以在Rmd文件的开头加入下面的代码
+```rmd
+```{r}
+library(knitr)
+library(showtext)
+opts_chunk$set(fig.showtext = TRUE,prompt = TRUE,message = FALSE,warning = FALSE)
+```
 ```
