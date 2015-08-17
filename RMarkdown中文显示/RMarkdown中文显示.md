@@ -29,8 +29,39 @@ loaded via a namespace (and not attached):
 ### RMarkdown生成PDF中文显示方法
 
 #### 方法1
-+ 在R软件的`library`目录下找到`rmarkdown`包，在`rmd`文件夹下找到`latex`文件夹，将`default.tex`和另一个`default-1.14.tex`打开，在`\begin{document}`前加入以下的代码
+在R软件的`library`目录下找到`rmarkdown`包，在`rmd`文件夹下找到`latex`文件夹，将`default.tex`和另一个`default-1.14.tex`打开，在`\begin{document}`前加入以下的代码：
 ```latex
 \usepackage{ctex}
 \setmainfont{SimSun}
+```
+或者是加入下面的代码：
+```latex
+\usepackage{xeCJK}  
+\setCJKmainfont{simsun.ttc}
+```
+上面的两种方法皆可，然后切换到RMarkdown工作环境下，将编译软件选为`xelatex`即可。
+
+#### 方法2
+在该Rmd文件同一目录下，新建一个`header.tex`的文件，内容如下：
+```latex
+\usepackage{xeCJK}  
+\setCJKmainfont{simsun.ttc}
+```
+或者
+```latex
+\usepackage{ctex}
+\setmainfont{SimSun}
+```
+然后用`includes`字段把它插入模板中：
+```rmd
+output: 
+  pdf_document: 
+    highlight: espresso
+    latex_engine: xelatex
+    includes:
+      in_header: header.tex
+    number_sections: yes
+    toc: yes
+    toc_depth: 3
+---
 ```
