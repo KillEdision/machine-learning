@@ -1,0 +1,293 @@
+---
+title: "面向深度学习的R语言线性代数速查"
+author: "赵奇"
+date: "2015年8月17日"
+output: 
+  pdf_document: 
+    highlight: espresso
+    latex_engine: xelatex
+    includes:
+      in_header: header.tex
+    number_sections: yes
+    toc: yes
+    toc_depth: 3
+---
+```{r}
+library(knitr)
+#library(printr)
+library(showtext)
+opts_chunk$set(fig.showtext = TRUE,prompt = TRUE,message = FALSE,warning = FALSE,cache = TRUE)
+```
+
+# 矩阵乘法
+## 乘法
+```{r}
+A <- matrix(data = 1:36, nrow = 6)
+A
+B <- matrix(data = 1:30, nrow = 6)
+B
+A %*% B
+```
+
+## Hadamard乘法
+```{r}
+A <- matrix(data = 1:36, nrow = 6)
+A
+B <- matrix(data = 11:46, nrow = 6)
+B
+A * B
+```
+
+## 点乘
+```{r}
+X <- matrix(data = 1:10, nrow = 10)
+X
+Y <- matrix(data = 11:20, nrow = 10)
+Y
+dotProduct <- function(X, Y) {
+    as.vector(t(X) %*% Y)
+}
+
+dotProduct(X, Y)
+```
+
+## 矩阵相乘的性质
+### 满足分配率
+```{r}
+A <- matrix(data = 1:25, nrow = 5)
+B <- matrix(data = 26:50, nrow = 5)
+C <- matrix(data = 51:75, nrow = 5)
+
+A %*% (B + C)
+A %*% B + A %*% C
+```
+
+### 满足结合律
+```{r}
+A <- matrix(data = 1:25, nrow = 5)
+B <- matrix(data = 26:50, nrow = 5)
+C <- matrix(data = 51:75, nrow = 5)
+
+(A %*% B) %*% C
+A %*% (B %*% C)
+```
+
+### 不满足交换律
+```{r}
+A <- matrix(data = 1:25, nrow = 5)
+B <- matrix(data = 26:50, nrow = 5)
+
+A %*% B
+B %*% A
+```
+
+# 矩阵转置
+```{r}
+A <- matrix(data = 1:25, nrow = 5, ncol = 5, byrow = TRUE)
+A
+t(A)
+```
+
+## 矩阵转置的性质
+```{r}
+A <- matrix(data = 1:25, nrow = 5)
+B <- matrix(data = 25:49, nrow = 5)
+
+t(A %*% B)
+t(B) %*% t(A)
+```
+
+# 解线性方程 Ax = B
+## 方法1
+```{r}
+A <- matrix(data = c(1, 3, 2, 4, 2, 4, 3, 5, 1, 6, 7, 2, 1, 5, 6, 7), nrow = 4, byrow = TRUE)
+A
+B <- matrix(data = c(1, 2, 3, 4), nrow = 4)
+B
+solve(a = A, b = B)
+```
+
+## 方法2
+```{r}
+A <- matrix(data = c(1, 3, 2, 4, 2, 4, 3, 5, 1, 6, 7, 2, 1, 5, 6, 7), nrow = 4, byrow = TRUE)
+A
+B <- matrix(data = c(1, 2, 3, 4), nrow = 4)
+B
+library(MASS)
+
+X <- ginv(A) %*% B
+X
+```
+
+# 单位阵
+```{r}
+I <- diag(x = 1, nrow = 5, ncol = 5)
+I
+A <- matrix(data = 1:25, nrow = 5)
+
+A %*% I
+I %*% A
+```
+
+# 矩阵求逆
+```{r}
+A <- matrix(data = c(1, 2, 3, 1, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 3), nrow = 5)
+A
+library(MASS)
+
+ginv(A)
+ginv(A) %*% A
+A %*% ginv(A)
+```
+
+# 行列式
+```{r}
+A <- matrix(data = c(1, 3, 2, 4, 2, 4, 3, 5, 1, 6, 7, 2, 1, 5, 6, 7), nrow = 4, byrow = TRUE)
+A
+det(A)
+```
+
+# 范数
+```{r}
+lpNorm <- function(A, p) {
+    if (p >= 1 & dim(A)[[2]] == 1 && is.infinite(p) == FALSE) {
+            sum((apply(X = A, MARGIN = 1, FUN = abs)) ** p) ** (1 / p)
+        
+    } else if (p >= 1 & dim(A)[[2]] == 1 & is.infinite(p)) {
+        max(apply(X = A, MARGIN = 1, FUN = abs)) # Max Norm
+    } else {
+        invisible(NULL)
+    }
+}
+
+lpNorm(A = matrix(data = 1:10), p = 1)
+lpNorm(A = matrix(data = 1:10), p = 2) # Euclidean Distance 
+lpNorm(A = matrix(data = 1:10), p = 3)
+lpNorm(A = matrix(data = -100:10), p = Inf)
+```
+
+## 性质
+```{r}
+lpNorm(A = matrix(data = rep(0, 10)), p = 1) == 0
+lpNorm(A = matrix(data = 1:10) + matrix(data = 11:20), p = 1) <= lpNorm(A = matrix(data = 1:10), p = 1) + lpNorm(A = matrix(data = 11:20), p = 1)
+tempFunc <- function(i) {
+    lpNorm(A = i * matrix(data = 1:10), p = 1) == abs(i) * lpNorm(A = matrix(data = 1:10), p = 1)   
+}
+
+all(sapply(X = -10:10, FUN = tempFunc))
+```
+
+# Frobenius范数
+```{r}
+frobeniusNorm <- function(A) {
+    (sum((as.numeric(A)) ** 2)) ** (1 / 2)
+}
+
+frobeniusNorm(A = matrix(data = 1:25, nrow = 5))
+```
+
+# 特殊矩阵和向量
+## 对角矩阵
+```{r}
+A <- diag(x = c(1:5, 6, 1, 2, 3, 4), nrow = 10)
+A
+X <- matrix(data = 21:30)
+X
+A %*% X
+library(MASS)
+
+ginv(A)
+```
+
+## 对称矩阵
+```{r}
+A <- matrix(data = c(1, 2, 2, 1), nrow = 2)
+A
+all(A == t(A))
+```
+
+## 单位向量
+```{r}
+lpNorm(A = matrix(data = c(1, 0, 0, 0)), p = 2)
+```
+
+## 正交向量
+```{r}
+X <- matrix(data = c(11, 0, 0, 0))
+Y <- matrix(data = c(0, 11, 0, 0))
+
+all(t(X) %*% Y == 0)
+```
+
+## 正交单位向量组
+```{r}
+X <- matrix(data = c(1, 0, 0, 0))
+Y <- matrix(data = c(0, 1, 0, 0))
+
+lpNorm(A = X, p = 2) == 1
+lpNorm(A = Y, p = 2) == 1
+all(t(X) %*% Y == 0)
+```
+
+## 正交矩阵
+```{r}
+A <- matrix(data = c(1, 0, 0, 0, 1, 0, 0, 0, 1), nrow = 3, byrow = TRUE)
+A
+all(t(A) %*% A == A %*% t(A))
+all(t(A) %*% A == diag(x = 1, nrow = 3))
+library(MASS)
+all(t(A) == ginv(A))
+```
+
+## 特征分解
+```{r}
+A <- matrix(data = 1:25, nrow = 5, byrow = TRUE)
+A
+y <- eigen(x = A)
+y
+library(MASS)
+all.equal(y$vectors %*% diag(y$values) %*% ginv(y$vectors), A)
+```
+
+## 奇异值分解
+```{r}
+A <- matrix(data = 1:36, nrow = 6, byrow = TRUE)
+A
+y <- svd(x = A)
+y
+all.equal(y$u %*% diag(y$d) %*% t(y$v), A)
+```
+
+## 广义逆矩阵
+```{r}
+A <- matrix(data = 1:25, nrow = 5)
+A
+B <- ginv(A)
+B
+y <- svd(A)
+all.equal(y$v %*% ginv(diag(y$d)) %*% t(y$u), B)
+```
+
+## 矩阵的迹
+```{r}
+A <- diag(x = 1:10)
+A
+library(psych)
+tr(A)
+alternativeFrobeniusNorm <- function(A) {
+    sqrt(tr(t(A) %*% A))
+}
+
+alternativeFrobeniusNorm(A)
+frobeniusNorm(A)
+all.equal(tr(A), tr(t(A)))
+A <- diag(x = 1:5)
+A
+B <- diag(x = 6:10)
+B
+C <- diag(x = 11:15)
+C
+all.equal(tr(A %*% B %*% C), tr(C %*% A %*% B))
+all.equal(tr(C %*% A %*% B), tr(B %*% C %*% A))
+```
+
