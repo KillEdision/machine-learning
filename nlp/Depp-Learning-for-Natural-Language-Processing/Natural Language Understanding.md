@@ -34,3 +34,13 @@ Distributed word representations
   + [Insights from the first in-class bake-off](https://docs.google.com/document/d/14HkgUPdygIkJmTA4Vj2dDCi38-pF8R84TEtIojpf94o/edit?usp=sharing)
   + [In-class bake-offs](http://web.stanford.edu/class/cs224u/materials/cs224u-2015-wordrep-bakeoffs.pdf)
   + [Word entailment bake-off materials](http://web.stanford.edu/class/cs224u/materials/wordentail.zip) (also in the Github repository)
+
++ Screencasts/Readings
+  + [Turney and Pantel 2010](http://www.jair.org/media/2934/live-2934-4846-jair.pdf)
+  + [Screencast: Overview](https://youtu.be/gtuhPq0Xyno) [slides](http://web.stanford.edu/class/cs224u/materials/cs224u-2015-vsm-overview.pdf)
+  + [Screencast: Vector comparison](https://youtu.be/LYH93YnhuyQ) [slides](http://web.stanford.edu/class/cs224u/materials/cs224u-2015-vsm-veccompare.pdf)
+  + [Screencast: Reweighting](https://youtu.be/WFySbJ3FGcM) [slides](http://web.stanford.edu/class/cs224u/materials/cs224u-2015-vsm-weighting.pdf)
+  + [Screencast: Dimensionality reduction](https://youtu.be/qSA9v7ZkC7Q) [slides](http://web.stanford.edu/class/cs224u/materials/cs224u-2015-vsm-disambiguation.pdf)
+  + Talk: [t-SNE](https://www.youtube.com/watch?v=RJVL80Gg3lA) (van der Maaten)
+  + [Screencast: Word-sense disambiguation](https://youtu.be/DEMn10hzXX4) [slides](http://web.stanford.edu/class/cs224u/materials/cs224u-2015-vsm-disambiguation.pdf)
+  + Talk: [GloVe](https://www.youtube.com/watch?v=RyTpzZQrHCs) (Pennington)
