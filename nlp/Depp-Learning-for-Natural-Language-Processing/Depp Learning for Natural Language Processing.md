@@ -43,7 +43,7 @@
 + [UFLDL page on gradient checking](http://ufldl.stanford.edu/wiki/index.php/Gradient_checking_and_advanced_optimization) [slides](http://cs224d.stanford.edu/lectures/CS224d-Lecture6.pdf) [video](https://www.youtube.com/watch?v=DTbI7XisZcQ)
  
 ## Assignment #1 due
-[Pset 1](http://cs224d.stanford.edu/assignment1/index.html)
++ [Pset 1](http://cs224d.stanford.edu/assignment1/index.html)
 
 ## Recurrent neural networks -- for language modeling and other tasks
 
@@ -57,7 +57,7 @@
 + [vanishing grad notebook](http://cs224d.stanford.edu/notebooks/vanishing_grad_example.ipynb)
 
 ## Course Project Proposal due
-[proposal description](http://cs224d.stanford.edu/project.html#proposal)
++ [proposal description](http://cs224d.stanford.edu/project.html#proposal)
 
 ## GRUs and LSTMs -- for machine translation
 
@@ -79,7 +79,7 @@
 + [slides](http://cs224d.stanford.edu/lectures/CS224d-Lecture10.pdf) [video](https://www.youtube.com/watch?v=sVXp0UwheXw)
 
 ## Pset #2 Due date
-[Pset #2](http://cs224d.stanford.edu/assignment2/index.html)
++ [Pset #2](http://cs224d.stanford.edu/assignment2/index.html)
 
 ## Review Session for Midterm
 Suggested Readings: N/A [slides](http://cs224d.stanford.edu/lectures/CS224d-Lecture11.pdf) [video - see Piazza]
@@ -91,7 +91,7 @@ Suggested Readings: N/A [slides](http://cs224d.stanford.edu/lectures/CS224d-Lect
 + [slides](http://cs224d.stanford.edu/lectures/CS224d-Lecture12.pdf) [video](https://www.youtube.com/watch?v=Xumy3Yjq4zk)
 
 ## Course Project Milestone
-[milestone description](http://cs224d.stanford.edu/project.html#milestone)
++ [milestone description](http://cs224d.stanford.edu/project.html#milestone)
 
 ## Convolutional neural networks -- for sentence classification
 + [A Convolutional Neural Network for Modelling Sentences](http://nal.co/papers/Kalchbrenner_DCNN_ACL14)
