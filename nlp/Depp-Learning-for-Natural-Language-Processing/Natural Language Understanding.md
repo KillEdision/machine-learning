@@ -110,4 +110,28 @@ Text to 3D scene generation (Will Monroe) [slides](http://web.stanford.edu/class
 [HW 4](http://nbviewer.ipython.org/github/cgpotts/cs224u/blob/master/nli.html#Homework-4) consists of four problems (all required), which appear at the end of [the natural language inference codelab](http://nbviewer.ipython.org/github/cgpotts/cs224u/blob/master/nli.html). This is distributed in three content-identical formats (nli.html, nli.py, nli.ipynb) in the [CS224u codebase](https://github.com/cgpotts/cs224u/). You're encouraged to turn your work in as iPython HTML output or as a Python script [due May 20].
 Project milestone due May 25
 
+### May 18
++ plan
+  + [SEMPRE: Semantic Parsing with Execution (Percy Liang)](http://web.stanford.edu/class/cs224u/materials/cs224u-sempre-slides.pdf)
+  + [SEMPRE grammar constructed during class](http://web.stanford.edu/class/cs224u/materials/cs224u.grammar)
 
++ Code/Data
+  + [SEMPRE homepage](http://www-nlp.stanford.edu/software/sempre/)
+
+### May 20
++ plan
+[Neural networks for natural language understanding (Sam Bowman)](http://web.stanford.edu/class/cs224u/materials/cs224u-2015-bowman.pdf)
+
++ Code/Data
+  + [Natural language inference codelab in HTML](http://nbviewer.ipython.org/github/cgpotts/cs224u/blob/master/nli.html)
+  + [Github codebase](https://github.com/cgpotts/cs224u)
+
++ Screencasts/Readings
+  + [Bowman et al. 2015](http://arxiv.org/abs/1406.1827)
+
+### May 27
++ plan
+Project work (teaching team available in the classroom)
+
++ Assignments
+Final project due Jun 10, 3:15 pm
